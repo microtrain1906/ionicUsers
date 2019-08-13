@@ -15,6 +15,11 @@ export class AppComponent {
       url: '/login',
       icon: 'log-in'
     },
+    {
+      title: 'Logout',
+      url: '/logout',
+      icon: 'log-out'
+    }
   ];
 
   constructor(
