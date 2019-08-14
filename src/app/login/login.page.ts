@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms'; 
-
-import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 import { User } from '../user';
 
 @Component({
@@ -15,7 +14,7 @@ export class LoginPage implements OnInit {
   errorMessage: string;
 
   constructor(
-    private userService: UserService
+    private authService: AuthService
   ) {}
 
   ngOnInit() {}
@@ -31,7 +30,7 @@ export class LoginPage implements OnInit {
   }
 
   onSubmit(): void{
-    this.userService.logIn(this.user).subscribe(
+    this.authService.logIn(this.user).subscribe(
       (response) => {
         this.response(response);
       }

@@ -11,7 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { UserService } from './user.service';
+import { UsersService } from './users.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +25,7 @@ import { UserService } from './user.service';
   providers: [
     StatusBar,
     SplashScreen,
-    UserService,
+    UsersService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],

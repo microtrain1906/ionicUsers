@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms'; 
 import { Router } from '@angular/router';
 
-import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 import { User } from '../user';
 
 @Component({
@@ -16,7 +16,7 @@ export class RegisterPage implements OnInit {
   errors: any = {};
 
   constructor(
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -42,7 +42,8 @@ export class RegisterPage implements OnInit {
       if( response.errors.errors.email ){
         this.errors.email = response.errors.errors.email.message;
       }
-}
+
+    }
 
     if(response.success===true){
       this.router.navigate(['/login']);
@@ -50,7 +51,7 @@ export class RegisterPage implements OnInit {
   }
 
   onSubmit(): void{
-    this.userService.register(this.user).subscribe(
+    this.authService.register(this.user).subscribe(
       (response) => {
         this.response(response);
       }
