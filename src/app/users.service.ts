@@ -27,20 +27,24 @@ export class UsersService {
     this.url = `${l.protocol}//${host}/api/users/`;
   }
 
-  users(): Observable<User>{
-    return this.http.get<User>(this.url);
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.url);
   }
-  create(user: User): Observable<User>{
-    return this.http.post<User>(this.url, user, httpOptions);
+
+  getUser(id: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/${id}`);
   }
-  user(id: string): Observable<User>{
-    return this.http.get<User>(this.url + id);
-  }
-  edit(user: User): Observable<User>{
+  
+  createUser (user: User): Observable<User> {
     return this.http.post<User>(this.url, user, httpOptions);
   }
 
-  delete(id: string): Observable<User>{
-    return this.http.delete<User>(this.url + id);
+  editUser (user: User): Observable<User> {
+    return this.http.put<User>(this.url, user, httpOptions);
   }
+  
+  deleteUser (id: string): Observable<User> {
+    return this.http.delete<User>(`${this.url}/${id}`);
+  }
+  
 }
