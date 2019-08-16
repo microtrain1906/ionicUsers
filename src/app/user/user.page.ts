@@ -33,4 +33,21 @@ export class UserPage implements OnInit {
     );
   }
 
+  userEdit(): void{
+    this.usersService.editUser(this.user).subscribe(
+      (response:any)=>{
+        this.user = response.user;
+      console.log(this.user)}
+    );
+  }
+
+  deleteUser(id:string):void {
+    if(confirm('Are you sure you want to delete '+this.user._id)){
+      this.usersService.deleteUser(id).subscribe(
+        (response:any)=>{
+        console.log(this.user)}
+    );
+    }
+  }
+
 }

@@ -15,24 +15,30 @@
     </ion-label>
   </ion-item>
 
+  <ion-card *ngIf="user">
+    <ion-card-header>
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+    </ion-card-header>
+  <ion-card-content>
+    <p>{{ user.email }}</p>
+    <p>{{ user.username}}</p>
+  </ion-card-content>
+  </ion-card>
 
-  <ion-list *ngIf="user">
-    <ion-item>
-        <ion-label>{{ user.username }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{user.first_name}} {{user.last_name}}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{ user.email }}</ion-label>
-    </ion-item>
+  <ion-fab right bottom *ngIf="user">
 
-  </ion-list>
-  
-  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button  color="success" [routerLink]="['/user-edit', user._id]">
+      <ion-icon name="create"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-button  color="danger" [routerLink]="['/user-delete']">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </ion-fab-button>
+
     <ion-fab-button  color="secondary" [routerLink]="['/user-create']">
       <ion-icon name="person-add"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
 
+  </ion-fab>
+  
 </ion-content>
