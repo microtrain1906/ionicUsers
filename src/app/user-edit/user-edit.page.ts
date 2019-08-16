@@ -62,7 +62,6 @@ export class UserEditPage {
   getUser(id:string): void{
     this.usersService.getUser(id).subscribe(
       (response:any)=>{
-        console.log(this.user)
         this.user = response.user;
       }
     );
